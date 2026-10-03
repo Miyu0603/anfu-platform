@@ -1,0 +1,232 @@
+@import 'tailwindcss';
+
+/*
+ * Theme tokens. 2a 亮色 / 1b 深色 share every layout rule; only these values differ.
+ * Deviation from the handoff palette: --ink-faint is darker than #8a94a5 / #6c7a8f so it passes
+ * WCAG AA (4.5:1) on both page and surface backgrounds, which the spec's acceptance criteria require.
+ */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --page: #eef1f5;
+  --surface: #ffffff;
+  --input: #ffffff;
+  --line: #d8dee7;
+  --line-row: #e6eaf0;
+  --input-bd: #c3ccd8;
+  --btn-bd: #b9c3d1;
+  --ink: #141b26;
+  --ink-2: #5b6678;
+  --ink-3: #3d4757;
+  --ink-faint: #636d7f;
+  --ink-strong: #141b26;
+  --accent: #16305c;
+  --accent-hover: #0d1f40;
+  --accent-line: #16305c;
+  --accent-ink: #16305c;
+  --accent-soft: #e6ecf6;
+  --tag-bd: #9fb2d3;
+  --disabled: #b9c3d1;
+  --big-count: #16305c;
+  --chart-line: #16305c;
+  --hover: rgba(22, 48, 92, 0.05);
+
+  --damage-bar: #e0241b;
+  --damage-bg: #e0241b;
+  --damage-fg: #ffffff;
+  --damage-bd: #e0241b;
+  --damage-txt: #c01d16;
+  --damage-tint: #fff4f3;
+  --need-bar: #f08a00;
+  --need-bg: #ffae1a;
+  --need-fg: #2a1800;
+  --need-bd: #ffae1a;
+  --need-txt: #985400;
+  --need-tint: #fffbf2;
+  --pending-bar: #f08a00;
+  --pending-bg: #fff7e6;
+  --pending-fg: #8a4c00;
+  --pending-bd: #f08a00;
+  --pending-txt: #985400;
+  --pending-tint: #ffffff;
+  --ok-bar: #11934f;
+  --ok-bg: #e3f6ec;
+  --ok-fg: #0b6b39;
+  --ok-bd: #11934f;
+  --ok-txt: #0b7a40;
+  --ok-tint: #f2fbf6;
+
+  --fill-ok: #0b7a40;
+  --fill-ok-fg: #ffffff;
+  --fill-need: #ffae1a;
+  --fill-need-fg: #2a1800;
+  --fill-damage: #c01d16;
+  --fill-damage-fg: #ffffff;
+
+  --kpi-pending-bg: #fff7e6;
+  --kpi-pending-note: #8a4c00;
+  --ok-drawer: #f2fbf6;
+  --ok-chip-bd: #cfe5d8;
+  --ok-chip-ink: #141b26;
+  --ok-chip-time: #5b6678;
+  --demo-bar: #05080c;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #0b1017;
+  --surface: #0f1620;
+  --input: #121923;
+  --line: #222d3b;
+  --line-row: #1a2330;
+  --input-bd: #2c3848;
+  --btn-bd: #3a4658;
+  --ink: #e4eaf2;
+  --ink-2: #8f9cb0;
+  --ink-3: #b4bfcf;
+  --ink-faint: #7b889c;
+  --ink-strong: #ffffff;
+  --accent: #2f5fbf;
+  --accent-hover: #3a6dd1;
+  --accent-line: #4a7fe0;
+  --accent-ink: #9fbcf0;
+  --accent-soft: #132036;
+  --tag-bd: #33507f;
+  --disabled: #2c3848;
+  --big-count: #ffffff;
+  --chart-line: #7da6f0;
+  --hover: rgba(159, 188, 240, 0.05);
+
+  --damage-bar: #e0241b;
+  --damage-bg: #ff5247;
+  --damage-fg: #1a0504;
+  --damage-bd: #ff5247;
+  --damage-txt: #ff7b72;
+  --damage-tint: #221114;
+  --need-bar: #f08a00;
+  --need-bg: #ffb42e;
+  --need-fg: #221400;
+  --need-bd: #ffb42e;
+  --need-txt: #ffc457;
+  --need-tint: #1d1a12;
+  --pending-bar: #f08a00;
+  --pending-bg: #241c0c;
+  --pending-fg: #ffc457;
+  --pending-bd: #ffb42e;
+  --pending-txt: #ffc457;
+  --pending-tint: transparent;
+  --ok-bar: #11934f;
+  --ok-bg: #0f2a1c;
+  --ok-fg: #45d98a;
+  --ok-bd: #2fc775;
+  --ok-txt: #45d98a;
+  --ok-tint: #0f1f17;
+
+  --fill-ok: #2fc775;
+  --fill-ok-fg: #04170c;
+  --fill-need: #ffb42e;
+  --fill-need-fg: #221400;
+  --fill-damage: #ff5247;
+  --fill-damage-fg: #1a0504;
+
+  --kpi-pending-bg: #18140a;
+  --kpi-pending-note: #c9a35a;
+  --ok-drawer: #0d1712;
+  --ok-chip-bd: #1f3b2b;
+  --ok-chip-ink: #c8e9d6;
+  --ok-chip-time: #7d9a8a;
+  --demo-bar: #000000;
+}
+
+@theme inline {
+  --font-sans: 'Noto Sans TC', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-input: var(--input);
+  --color-line: var(--line);
+  --color-line-row: var(--line-row);
+  --color-input-bd: var(--input-bd);
+  --color-btn-bd: var(--btn-bd);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-strong: var(--ink-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-line: var(--accent-line);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-tag-bd: var(--tag-bd);
+  --color-disabled: var(--disabled);
+  --color-big-count: var(--big-count);
+  --color-hover: var(--hover);
+
+  --color-damage-txt: var(--damage-txt);
+  --color-need-txt: var(--need-txt);
+  --color-need-bar: var(--need-bar);
+  --color-pending-txt: var(--pending-txt);
+  --color-pending-bd: var(--pending-bd);
+  --color-ok-txt: var(--ok-txt);
+
+  --color-kpi-pending-bg: var(--kpi-pending-bg);
+  --color-kpi-pending-note: var(--kpi-pending-note);
+  --color-ok-drawer: var(--ok-drawer);
+  --color-ok-chip-bd: var(--ok-chip-bd);
+  --color-ok-chip-ink: var(--ok-chip-ink);
+  --color-ok-chip-time: var(--ok-chip-time);
+  --color-demo-bar: var(--demo-bar);
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    -webkit-text-size-adjust: 100%;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent-line);
+    outline-offset: 2px;
+  }
+}
+
+/* Status palettes, applied with a single class so components just say `tone-need`. */
+@layer components {
+  .tone-damage { --t-bar: var(--damage-bar); --t-bg: var(--damage-bg); --t-fg: var(--damage-fg); --t-bd: var(--damage-bd); --t-txt: var(--damage-txt); --t-tint: var(--damage-tint); --t-fill: var(--fill-damage); --t-fill-fg: var(--fill-damage-fg); }
+  .tone-need { --t-bar: var(--need-bar); --t-bg: var(--need-bg); --t-fg: var(--need-fg); --t-bd: var(--need-bd); --t-txt: var(--need-txt); --t-tint: var(--need-tint); --t-fill: var(--fill-need); --t-fill-fg: var(--fill-need-fg); }
+  .tone-pending { --t-bar: var(--pending-bar); --t-bg: var(--pending-bg); --t-fg: var(--pending-fg); --t-bd: var(--pending-bd); --t-txt: var(--pending-txt); --t-tint: var(--pending-tint); }
+  .tone-ok { --t-bar: var(--ok-bar); --t-bg: var(--ok-bg); --t-fg: var(--ok-fg); --t-bd: var(--ok-bd); --t-txt: var(--ok-txt); --t-tint: var(--ok-tint); --t-fill: var(--fill-ok); --t-fill-fg: var(--fill-ok-fg); }
+
+  .btn-secondary {
+    @apply rounded-md border border-btn-bd bg-transparent px-3 py-1.5 text-[13px] text-ink transition-colors hover:bg-hover;
+  }
+  .btn-primary {
+    @apply rounded-md bg-accent px-3 py-1.5 text-[13px] font-bold text-white transition-colors hover:bg-accent-hover disabled:bg-disabled;
+  }
+  .field {
+    @apply rounded-md border border-input-bd bg-input px-3 py-1.5 text-[13px] text-ink;
+  }
+  .chip {
+    @apply rounded-md border px-2.5 py-[5px] text-[13px] transition-colors;
+  }
+  .chip[aria-pressed='false'] {
+    @apply border-input-bd bg-input text-ink hover:bg-hover;
+  }
+  .chip[aria-pressed='true'] {
+    @apply border-accent-line bg-accent text-white;
+  }
+  .label {
+    @apply mb-2 text-[13px] text-ink-2;
+  }
+}
