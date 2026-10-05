@@ -44,7 +44,7 @@ export function History() {
                       {h.isActive && <span className="ml-2 text-xs font-normal text-pending-txt">進行中</span>}
                     </div>
                     <div className="mt-1 font-mono text-xs text-ink-2">
-                      {formatDateTime(h.drill.startedAt)} · {h.total} 家 · {pct(h.rate)} · {h.elapsedMinutes} 分
+                      {formatDateTime(h.drill.startedAt)} · {h.total} 家 · 回報率 {pct(h.rate)} · 歷時 {h.elapsedMinutes} 分
                     </div>
                   </Link>
                 </li>
@@ -69,7 +69,7 @@ function Detail({ summary }: { summary: DrillSummary }) {
     { k: '對象數', v: String(summary.total) },
     { k: '回報率', v: pct(summary.rate) },
     { k: '中位回報時間', v: summary.medianMinute === null ? '—' : `${summary.medianMinute} 分` },
-    { k: '最終未回報', v: String(summary.total - summary.replied) },
+    { k: '未回報', v: String(summary.total - summary.replied) },
   ];
 
   const exportCsv = () => {

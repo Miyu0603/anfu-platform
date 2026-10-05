@@ -77,7 +77,7 @@ export function QueueRowDetail({ id, row, minute }: { id: string; row: QueueRow;
             aria-pressed={c.opsNote === 'contacted'}
             onClick={() => dispatch({ type: 'MARK_OPS', calloutId: c.id, opsNote: 'contacted' })}
           >
-            {c.opsNote === 'contacted' ? '已標記聯繫' : '標記已聯繫'}
+            {c.opsNote === 'contacted' ? '取消「已聯繫」' : '標記已聯繫'}
           </button>
           <button
             type="button"
@@ -85,7 +85,7 @@ export function QueueRowDetail({ id, row, minute }: { id: string; row: QueueRow;
             aria-pressed={c.opsNote === 'site-check'}
             onClick={() => dispatch({ type: 'MARK_OPS', calloutId: c.id, opsNote: 'site-check' })}
           >
-            {c.opsNote === 'site-check' ? '已標記現地確認' : '標記需現地確認'}
+            {c.opsNote === 'site-check' ? '取消「需現地確認」' : '標記需現地確認'}
           </button>
           {pending && (
             <button

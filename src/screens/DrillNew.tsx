@@ -42,7 +42,7 @@ export function DrillNew() {
           <h1 className="text-[22px] font-bold">發起點名</h1>
           {running && (
             <p role="status" className="rounded-md border border-pending-bd bg-kpi-pending-bg px-4 py-3 text-sm text-kpi-pending-note">
-              「{running.label}」仍在進行中，一次只能進行一場點名。請先到看板結束目前的點名。
+              「{running.label}」還在進行中。請先到看板結束這場點名，才能發起新的點名。
             </p>
           )}
           <div>
@@ -99,7 +99,7 @@ export function DrillNew() {
           <div className="mt-2 border-t border-line pt-3 text-[13px] leading-[1.7] text-ink-2">
             通道：{CONFIG.baseChannel}
             <br />
-            {count === 0 ? '目前條件沒有符合的機構，請放寬範圍。' : `其中脆弱度高 ${highCount} 家`}
+            {count === 0 ? '沒有符合條件的機構，請放寬範圍。' : `其中脆弱度高 ${highCount} 家`}
           </div>
           {running ? (
             <Link to="/board" className="btn-primary mt-auto flex h-16 items-center justify-center rounded-lg text-[19px]">

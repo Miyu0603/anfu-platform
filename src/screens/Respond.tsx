@@ -34,7 +34,7 @@ export function Respond() {
       <Frame issued={drill ? issuedLabel(drill.startedAt) : null}>
         <h1 className="text-[26px] leading-tight font-black">這個連結已經失效</h1>
         <p className="text-[15px] leading-relaxed text-ink-2">
-          回報連結只能使用一次，並在發出後 {CONFIG.tokenTtlMinutes} 分鐘失效。若需要回報或更正，請直接來電，我們會協助處理。
+          這個連結已使用過或已過期。如需回報或更正，請來電告知。
         </p>
         <a
           href={`tel:${CONFIG.helpPhone}`}
@@ -75,7 +75,7 @@ export function Respond() {
       >
         <div className="text-[22px] font-bold">{STATUS_LABEL[callout.status]}</div>
         <div className="mt-1.5 font-mono text-sm opacity-85">
-          送出時間 {wallClock(drill, at)}（第 {pad2(at)} 分）
+          送出時間 {wallClock(drill, at)}
         </div>
         {callout.reports.length > 1 && <div className="mt-1 text-sm opacity-85">已更正，原回報為「{STATUS_LABEL[callout.reports[0]!.outcome]}」</div>}
       </div>
@@ -186,7 +186,7 @@ function Correction({ onPick }: { onPick: (o: Outcome) => void }) {
   return (
     <div className="flex flex-col gap-2.5">
       <p className="text-sm text-ink-2">
-        {CONFIG.correctionWindowMinutes} 分鐘內可以把「一切正常」更正為以下狀態，選一項就送出：
+        請點選目前的狀況，按下即送出：
       </p>
       <OutcomeButton outcome="need" onClick={() => onPick('need')} />
       <OutcomeButton outcome="damage" onClick={() => onPick('damage')} />

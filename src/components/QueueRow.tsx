@@ -18,7 +18,7 @@ function timeText(row: Row, minute: number): string {
   const c = row.callout;
   if (c.status === 'pending') return `未確認 ${pad2(minute)} 分 · ${escalationProgress(c, minute).currentChannel}`;
   const at = pad2(c.respondedAt ?? 0);
-  return row.leaving ? `第 ${at} 分回報 · 移入已回報` : `第 ${at} 分回報`;
+  return row.leaving ? `第 ${at} 分回報 · 即將移至下方` : `第 ${at} 分回報`;
 }
 
 export const QueueRow = forwardRef<HTMLLIElement, Props>(function QueueRow({ row, minute, open, onToggle }, ref) {
