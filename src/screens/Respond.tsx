@@ -54,7 +54,7 @@ export function Respond() {
       <Frame issued={issued}>
         <div className="text-[17px] text-ink-3">{facility.name}</div>
         <h1 className="text-[32px] leading-[1.2] font-black">現在狀況如何？</h1>
-        <p className="mb-5 text-[15px] leading-relaxed text-ink-2">請直接點選目前的狀況，按下即送出。</p>
+        <p className="mb-5 text-[15px] leading-relaxed text-ink-2">請確認現場情況後點選，按下即送出。之後若情況有變化，可以更正回報或來電告知。</p>
         {OUTCOMES.map((o) => (
           <OutcomeButton key={o} outcome={o} onClick={() => respond(o)} />
         ))}
