@@ -17,7 +17,6 @@ export function KpiStrip({ kpis }: { kpis: BoardKpis }) {
       <div className={`${cell} bg-kpi-pending-bg`}>
         <div className="text-[13px] text-ink-2">尚未確認</div>
         <div className={`${NUM} text-pending-txt`}>{kpis.pending}</div>
-        <div className="mt-1 text-xs text-kpi-pending-note">未確認不等於沒事</div>
       </div>
       <div className={`${cell} border-r md:border-r-0`}>
         <div className="text-[13px] text-ink-2">回報需要協助</div>

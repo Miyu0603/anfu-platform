@@ -11,14 +11,14 @@ export function OkDrawer({ items }: { items: { callout: Callout; facility: Facil
         type="button"
         aria-expanded={open}
         aria-controls="ok-drawer"
-        aria-label={`${items.length} 家已回報一切正常，不佔用市府人力`}
+        aria-label={`${items.length} 家已回報一切正常`}
         onClick={() => setOpen((o) => !o)}
         className="w-full px-4 py-3 text-left"
       >
         <span className="font-mono" aria-hidden>
           {open ? '▾' : '▸'}
         </span>{' '}
-        <span className="font-mono font-bold">{items.length}</span> 家已回報一切正常，不佔用市府人力
+        <span className="font-mono font-bold">{items.length}</span> 家已回報一切正常
       </button>
       {open && (
         <ul id="ok-drawer" className="flex max-h-40 flex-wrap gap-1.5 overflow-y-auto px-4 pb-3">

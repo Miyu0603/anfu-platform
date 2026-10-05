@@ -54,7 +54,7 @@ export function Respond() {
       <Frame issued={issued}>
         <div className="text-[17px] text-ink-3">{facility.name}</div>
         <h1 className="text-[32px] leading-[1.2] font-black">現在狀況如何？</h1>
-        <p className="mb-5 text-[15px] leading-relaxed text-ink-2">選一項就完成。不必登入，不必填其他欄位。</p>
+        <p className="mb-5 text-[15px] leading-relaxed text-ink-2">請直接點選目前的狀況，按下即送出。</p>
         {OUTCOMES.map((o) => (
           <OutcomeButton key={o} outcome={o} onClick={() => respond(o)} />
         ))}
@@ -77,7 +77,7 @@ export function Respond() {
         <div className="mt-1.5 font-mono text-sm opacity-85">
           送出時間 {wallClock(drill, at)}（第 {pad2(at)} 分）
         </div>
-        {callout.reports.length > 1 && <div className="mt-1 text-sm opacity-85">已更正，市府端保留兩筆紀錄</div>}
+        {callout.reports.length > 1 && <div className="mt-1 text-sm opacity-85">已更正，原回報為「{STATUS_LABEL[callout.reports[0]!.outcome]}」</div>}
       </div>
       <NoteField token={token} initial={callout.note ?? ''} />
       {canCorrect(callout, state.minute) && <Correction onPick={respond} />}

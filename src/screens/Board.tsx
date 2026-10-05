@@ -21,7 +21,7 @@ export function Board() {
         <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 py-16 text-center">
           <h1 className="text-[22px] font-bold">目前沒有進行中的點名</h1>
           <p className="max-w-md text-[15px] leading-relaxed text-ink-2">
-            發起點名後，系統會向範圍內的機構送出回報連結，尚未確認與需要協助的機構會依優先度排在這裡。
+            發起點名後，尚未確認與需要協助的機構會依優先順序列在這裡。
           </p>
           <Link to="/drill/new" className="btn-primary px-6 py-3 text-base">
             發起點名

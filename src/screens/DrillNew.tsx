@@ -21,7 +21,7 @@ export function DrillNew() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const running = activeDrill(state);
-  const [label, setLabel] = useState('0403 地震 規模 6.2');
+  const [label, setLabel] = useState('');
   const [scope, setScope] = useState<DrillScope>({
     districts: [],
     types: [],
@@ -53,6 +53,7 @@ export function DrillNew() {
               id="drill-label"
               value={label}
               maxLength={60}
+              placeholder="例：0403 地震 規模 6.2"
               onChange={(e) => setLabel(e.target.value)}
               className="w-full rounded-md border border-input-bd bg-input px-3 py-2.5 text-[15px]"
             />
